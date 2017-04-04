@@ -1,54 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-<display-name>Archetype Created Web Application</display-name>
-  <!-- Spring MVC 核心配置开始 -->
-  <servlet>
-    <servlet-name>SpringMvcDemo</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <!-- 可以通过contextConfigLocation来自定义SpringMVC配置文件的位置，如不指定，则默认在WEB-INF目录下，名称为[<servlet-name>]-servlet.xml，
-         此时文件名必须为[<servlet-name>]-servlet.xml，否则会出错-->
-    <!--以下init-param是自定义SpringMVC的配置文件的位置 -->
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>WEB-INF/spring-servlet.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <!-- 拦截设置 -->
-  <servlet-mapping>
-    <servlet-name>SpringMvcDemo</servlet-name>
-    <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <!-- Spring MVC 核心配置结束 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+        id="WebApp_ID"
+        version="3.0"
+>
+    <display-name>MyProject</display-name>
+    <!-- 加载Springweb容器配置 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- Spring IOC 容器的应用上下文 applicationcontext -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext*.xml</param-value>
+    </context-param>
 
-  <!--配置监听器-->
-  <!-- 读取Spring配置文件；applicationContext.xml -->
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <!-- 如果是监听多个文件，可用‘，’隔开 -->
-    <param-value>WEB-INF/applicationContext.xml</param-value>
-  </context-param>
-  <!--Spring监听器 ApplicationContext 载入 -->
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+    <!-- 配置SpringMVC，核心控制器 -->
+    <servlet>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- Spring MVC 的应用上下文 webapplicationcontext，与Spring mvc 使用的上下文是不一样的 -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:springmvc-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <!-- 使用/是servlet默认的加载路径 -->
+        <url-pattern>/</url-pattern>
+        <!-- 配置/*的时候静态资源 jsp文件不会被浏览器解析，因为返回的jsp会再次被拦截 -->
+        <!-- 如果是/*是404的话，确定一下你的静态文件操作是否处理了·
 
-  <!-- Spring字符集过滤器 -->
-  <filter>
-    <filter-name>encoding</filter-name>
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>UTF-8</param-value>
-    </init-param>
-  </filter>
+形如： <mvc:resources mapping="/images/**" location="/images/" cache-period="31556926"/>  -->
 
-  <filter-mapping>
-    <filter-name>encoding</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+    </servlet-mapping>
+    <!-- 使用Spring提供的编码过滤器解决乱码 -->
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- 配置首页 -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

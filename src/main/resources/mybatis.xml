@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- mybatis的配置 -->
+    <!-- 配置别名 -->
+    <!-- 这样SqlMapper中的paramType就不需要写全名，只需要使用别名 -->
+    <typeAliases>
+
+        <typeAlias type="com.springmvc.model.UserInfo" alias="_UserInfo"/>
+    </typeAliases>
+    <!-- mapper 的存放位置 -->
+    <mappers>
+      <mapper resource="UserInfo-mapper.xml" />
+        <!-- 		<mapper resource="liaody/mybatis/mapper/MusicBean-mapper.xml" />
+                <mapper resource="liaody/mybatis/mapper/MyOrder-mapper.xml" />
+                <mapper resource="liaody/mybatis/mapper/Classes-mapper.xml" />
+                <mapper resource="liaody/mybatis/mapper/CallProcedure-mapper.xml" /> -->
+    </mappers>
+</configuration>
