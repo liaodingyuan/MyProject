@@ -62,9 +62,7 @@ public class UserInfo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof UserInfo)) return false;
-
         UserInfo userInfo = (UserInfo) o;
-
         if (getUserId() != userInfo.getUserId()) return false;
         if (getUserName() != null ? !getUserName().equals(userInfo.getUserName()) : userInfo.getUserName() != null)
             return false;

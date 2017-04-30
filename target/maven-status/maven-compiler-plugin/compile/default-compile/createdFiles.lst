@@ -1,6 +1,11 @@
 basecc\Test.class
 com\springmvc\controller\LoginAndRegistController.class
+com\springmvc\controller\RegisterController.class
 com\springmvc\controller\ViewController.class
 com\springmvc\model\UserInfo.class
 com\springmvc\service\SqlMapper.class
+basecc\imageUtils\OperateImage.class
 com\springmvc\service\UserInfoService.class
+com\springmvc\model\RegisterUser.class
+com\springmvc\service\RegisterService.class
+basecc\imageUtils\SysScreenshot.class

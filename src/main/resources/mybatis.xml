@@ -13,6 +13,7 @@
     <!-- mapper 的存放位置 -->
     <mappers>
       <mapper resource="UserInfo-mapper.xml" />
+        <mapper resource="RegisterUser-mapper.xml" />
         <!-- 		<mapper resource="liaody/mybatis/mapper/MusicBean-mapper.xml" />
                 <mapper resource="liaody/mybatis/mapper/MyOrder-mapper.xml" />
                 <mapper resource="liaody/mybatis/mapper/Classes-mapper.xml" />

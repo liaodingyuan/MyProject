@@ -14,7 +14,7 @@
     <!-- Spring IOC 容器的应用上下文 applicationcontext -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext*.xml</param-value>
+        <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
     <!-- 配置SpringMVC，核心控制器 -->

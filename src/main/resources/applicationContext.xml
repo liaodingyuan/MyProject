@@ -21,20 +21,20 @@
     <!-- 编程式事务需要以下一行注解 -->
     <context:annotation-config />
     <!-- 加载配置属性文件 -->
-    <context:property-placeholder ignore-unresolvable="true" location="classpath*:jdbc.properties" />
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:jdbc.properties" />
     <!-- 配置dataSource -->
     <bean	id="dataSource" 	class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName">
-            <value>${driverClassName}</value>
+            <value>${jdbc.driverClassName}</value>
         </property>
         <property name="username">
-            <value>${username}</value>
+            <value>${jdbc.username}</value>
         </property>
         <property name="password">
-            <value>${password}</value>
+            <value>${jdbc.password}</value>
         </property>
         <property name="url">
-            <value>${url}</value>
+            <value>${jdbc.url}</value>
         </property>
     </bean>
     <!-- 配置SqlSessionFactoryBean -->

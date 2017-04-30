@@ -8,6 +8,8 @@
 </head>
 <body>
 模拟登录成功页面<br>
-${message }
+${message }<br>
+${message2 }<br>
+${message3 }
 </body>
 </html>
